@@ -130,3 +130,9 @@ export function adjustDynamicEventMaxLines(dynamicEventElement) {
 export function generateEventId() {
   return Date.now();
 }
+
+
+export function getEventCardLabel(event){
+  const alias = (event.alias ?? "").trim();
+  return alias.length > 0 ? alias : event.title;
+}
