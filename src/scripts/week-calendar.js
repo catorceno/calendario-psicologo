@@ -1,6 +1,7 @@
 import { generateWeekDays, isTheSameDay, today } from "./date.js";
 import { isEventAllDay, eventStartsBefore, eventEndsBefore, initDynamicEvent, eventCollidesWith, adjustDynamicEventMaxLines } from "./event.js";
 import { initEventList } from "./event-list.js";
+import { MINUTES_PER_DAY } from "./time-constants.js";
 
 const calendarTemplateElement = document.querySelector("[data-template='week-calendar']");
 const calendarDayOfWeekTemplateElement = document.querySelector("[data-template='week-calendar-day-of-week']");
@@ -145,8 +146,8 @@ function calculateEventsDynamicStyles(events) {
   }
 
   return initialEventGroupItems.map((eventGroupItem) => {
-    const topPercentage = 100 * (eventGroupItem.event.startTime / 1440);
-    const bottomPercentage = 100 - 100 * (eventGroupItem.event.endTime / 1440);
+    const topPercentage = 100 * (eventGroupItem.event.startTime / MINUTES_PER_DAY);
+    const bottomPercentage = 100 - 100 * (eventGroupItem.event.endTime / MINUTES_PER_DAY);
     const leftPercentage = columnWidth * eventGroupItem.columnIndex;
     const rightPercentage = columnWidth * (totalColumns - eventGroupItem.columnIndex - eventGroupItem.columnSpan);
 
