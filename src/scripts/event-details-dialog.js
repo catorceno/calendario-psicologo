@@ -55,7 +55,7 @@ export function initEventDetailsDialog() {
   });
 }
 
-function fillEventDetailsDialog(parent, event) {
+export function fillEventDetailsDialog(parent, event) {
   const eventDetailsElement = parent.querySelector("[data-event-details]");
   const eventDetailsTitleElement = eventDetailsElement.querySelector("[data-event-details-title]");
   const eventDetailsDateElement = eventDetailsElement.querySelector("[data-event-details-date]");
