@@ -2,7 +2,7 @@ import { generateMonthCalendarDays, today, isTheSameDay } from "./date.js";
 import { isEventAllDay, eventStartsBefore } from "./event.js";
 import { initEventList } from "./event-list.js";
 
-const calendarTemplateElemenent = document.querySelector("[data-template='month-calendar']");
+const calendarTemplateElement = document.querySelector("[data-template='month-calendar']");
 const calendarDayTemplateElement = document.querySelector("[data-template='month-calendar-day']");
 
 const calendarWeekClasses = {
@@ -12,7 +12,7 @@ const calendarWeekClasses = {
 };
 
 export function initMonthCalendar(parent, selectedDate, eventStore) {
-  const calendarContent = calendarTemplateElemenent.content.cloneNode(true);
+  const calendarContent = calendarTemplateElement.content.cloneNode(true);
   const calendarElement = calendarContent.querySelector("[data-month-calendar]");
   const calendarDayListElement = calendarElement.querySelector("[data-month-calendar-day-list]");
 
@@ -34,17 +34,17 @@ export function initMonthCalendar(parent, selectedDate, eventStore) {
 
 function initCalendarDay(parent, calendarDay, events) {
   const calendarDayContent = calendarDayTemplateElement.content.cloneNode(true);
-  const calendarDayElemenent = calendarDayContent.querySelector("[data-month-calendar-day]");
-  const calendarDayLabelElemenent = calendarDayContent.querySelector("[data-month-calendar-day-label]");
-  const calendarEventListWrapper = calendarDayElemenent.querySelector("[data-month-calendar-event-list-wrapper]");
+  const calendarDayElement = calendarDayContent.querySelector("[data-month-calendar-day]");
+  const calendarDayLabelElement = calendarDayContent.querySelector("[data-month-calendar-day-label]");
+  const calendarEventListWrapper = calendarDayElement.querySelector("[data-month-calendar-event-list-wrapper]");
 
   if (isTheSameDay(today(), calendarDay)) {
-    calendarDayElemenent.classList.add("month-calendar__day--highlight");
+    calendarDayElement.classList.add("month-calendar__day--highlight");
   }
 
-  calendarDayLabelElemenent.textContent = calendarDay.getDate();
+  calendarDayLabelElement.textContent = calendarDay.getDate();
 
-  calendarDayLabelElemenent.addEventListener("click", () => {
+  calendarDayLabelElement.addEventListener("click", () => {
     document.dispatchEvent(new CustomEvent("date-change", {
       detail: {
         date: calendarDay
@@ -71,9 +71,9 @@ function initCalendarDay(parent, calendarDay, events) {
     }));
   });
 
-  initEventList(calendarDayElemenent, events);
+  initEventList(calendarDayElement, events);
 
-  parent.appendChild(calendarDayElemenent);
+  parent.appendChild(calendarDayElement);
 }
 
 function sortCalendarDayEvents(events) {
