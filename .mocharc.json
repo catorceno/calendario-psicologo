@@ -1,0 +1,4 @@
+{
+  "require": ["./src/test-config/setup.js"],
+  "spec": ["src/scripts.tests/**/*.tests.js"]
+}

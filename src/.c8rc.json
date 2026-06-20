@@ -1,0 +1,11 @@
+{
+  "all": true,
+  "include": ["src/scripts/**/*.js"],
+  "exclude": [
+    "**/node_modules/**",
+    "**/*.tests.js",
+    "coverage/**"
+  ],
+  "reporter": ["html", "text", "text-summary"],
+  "report-dir": "./coverage"
+}

@@ -8,8 +8,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "coverage": "nyc --reporter=html --reporter=text node -e \"console.log('baseline')\""
+    "test": "mocha",
+    "coverage": "c8 mocha"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/catorceno/calendario-psicologo#readme",
   "devDependencies": {
+    "c8": "^11.0.0",
+    "jsdom": "^29.1.1",
+    "mocha": "^11.7.6",
     "nyc": "^18.0.0"
   }
 }
