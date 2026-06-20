@@ -1,6 +1,7 @@
 import { generateMonthCalendarDays, today, isTheSameDay } from "./date.js";
 import { isEventAllDay, eventStartsBefore } from "./event.js";
 import { initEventList } from "./event-list.js";
+import { DEFAULT_START_EVENT_MINS, DEFAULT_END_EVENT_MINS } from "./time-constants.js";
 
 const calendarTemplateElement = document.querySelector("[data-template='month-calendar']");
 const calendarDayTemplateElement = document.querySelector("[data-template='month-calendar-day']");
@@ -64,8 +65,8 @@ function initCalendarDay(parent, calendarDay, events) {
     document.dispatchEvent(new CustomEvent("event-create-request", {
       detail: {
         date: calendarDay,
-        startTime: 600,
-        endTime: 960
+        startTime: DEFAULT_START_EVENT_MINS,
+        endTime: DEFAULT_END_EVENT_MINS
       },
       bubbles: true
     }));

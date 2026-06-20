@@ -1,4 +1,5 @@
 import { getUrlDate } from "./url.js";
+import { DEFAULT_START_EVENT_MINS, DEFAULT_END_EVENT_MINS } from "./time-constants.js";
 
 export function initEventCreateButtons() {
   const buttonElements = document.querySelectorAll("[data-event-create-button]");
@@ -15,8 +16,8 @@ function initEventCreateButton(buttonElement) {
     buttonElement.dispatchEvent(new CustomEvent("event-create-request", {
       detail: {
         date: selectedDate,
-        startTime: 600,
-        endTime: 960
+        startTime: DEFAULT_START_EVENT_MINS,
+        endTime: DEFAULT_END_EVENT_MINS
       },
       bubbles: true
     }));

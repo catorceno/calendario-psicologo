@@ -1,1 +1,4 @@
 export const MINUTES_PER_DAY = 1440
+
+export const DEFAULT_START_EVENT_MINS = 600
+export const DEFAULT_END_EVENT_MINS = 960
