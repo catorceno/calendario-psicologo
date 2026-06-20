@@ -1,3 +1,5 @@
+import { MINUTES_PER_DAY } from './time-constants.js'
+
 const eventTemplateElement = document.querySelector("[data-template='event']");
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -59,7 +61,7 @@ function initEvent(event) {
 }
 
 export function isEventAllDay(event) {
-  return event.startTime === 0 && event.endTime === 1440;
+  return event.startTime === 0 && event.endTime === MINUTES_PER_DAY;
 }
 
 export function eventStartsBefore(eventA, eventB) {
