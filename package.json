@@ -1,0 +1,28 @@
+{
+  "name": "calendario-psicologo",
+  "version": "1.0.0",
+  "description": "[Diagrama](https://excalidraw.com/#json=zUcxncbkJKWwnvd_YnF2Z,K0KRNCuu47iMH1qLpn6vug)",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "coverage": "nyc --reporter=html --reporter=text node -e \"console.log('baseline')\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catorceno/calendario-psicologo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catorceno/calendario-psicologo/issues"
+  },
+  "homepage": "https://github.com/catorceno/calendario-psicologo#readme",
+  "devDependencies": {
+    "nyc": "^18.0.0"
+  }
+}
