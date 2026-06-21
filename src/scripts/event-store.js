@@ -1,4 +1,5 @@
 import { isTheSameDay } from "./date.js";
+import { sendConfirmationEmail } from "./email-notifier.js";
 
 // Update these with your Supabase project details.
 // NOTE: The public key is visible in frontend code.
@@ -33,6 +34,10 @@ export function initEventStore({ psychologistId = DEFAULT_PSYCHOLOGIST_ID } = {}
     }
 
     events.push(mapAppointmentToEvent(data));
+
+    sendConfirmationEmail(createdEvent).catch((error) => {
+      console.error("Confirmation email failed", error);
+    });
 
     document.dispatchEvent(new CustomEvent("events-change", {
       bubbles: true
