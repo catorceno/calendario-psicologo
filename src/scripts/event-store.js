@@ -1,5 +1,5 @@
 import { isTheSameDay } from "./date.js";
-import { sendConfirmationEmail } from "./email-notifier.js";
+import { sendConfirmationEmail, sendRescheduledEmail } from "./email-notifier.js";
 
 // Update these with your Supabase project details.
 // NOTE: The public key is visible in frontend code.
@@ -67,6 +67,7 @@ export function initEventStore({ psychologistId = DEFAULT_PSYCHOLOGIST_ID } = {}
 
   document.addEventListener("event-edit", async (event) => {
     const editedEvent = event.detail.event;
+    const previousEvent = event.detail.previousEvent;
 
     const appointment = mapEventToAppointment(editedEvent, psychologistId);
     const { data, error } = await supabaseClient
@@ -85,6 +86,18 @@ export function initEventStore({ psychologistId = DEFAULT_PSYCHOLOGIST_ID } = {}
     events = events.map((event) => {
       return event.id === editedEvent.id ? mapAppointmentToEvent(data) : event;
     });
+
+    const wasRescheduled = previousEvent && (
+      previousEvent.startTime !== editedEvent.startTime ||
+      previousEvent.endTime !== editedEvent.endTime ||
+      previousEvent.date?.getTime() !== editedEvent.date?.getTime()
+    );
+
+    if(wasRescheduled){
+      sendRescheduledEmail(editedEvent).catch((error) => {
+        console.error("Rescheduled email failed", error);
+      });
+    }
 
     document.dispatchEvent(new CustomEvent("events-change", {
       bubbles: true

@@ -65,3 +65,12 @@ export async function sendConfirmationEmail(event, deps = defaultDeps){
 
   await sendEmail(templateParams, deps.fetch ?? fetch);
 }
+
+export async function sendRescheduledEmail(event, deps = defaultDeps){
+  const templateParams = buildTemplateParams(event, {
+    subject: "Consulta Reprogramada",
+    mesage: "Tu cita ha sido reprogramada en el horario indicado abajo.",
+  });
+
+  await sendEmail(templateParams, deps.fetch ?? fetch);
+}

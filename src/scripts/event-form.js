@@ -4,6 +4,7 @@ export function initEventForm(toaster) {
   const formElement = document.querySelector("[data-event-form]");
 
   let mode = "create";
+  let originalEvent = null;
 
   formElement.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -26,7 +27,8 @@ export function initEventForm(toaster) {
     if (mode === "edit") {
       formElement.dispatchEvent(new CustomEvent("event-edit", {
         detail: {
-          event: formEvent
+          event: formEvent,
+          previousEvent: originalEvent
         },
         bubbles: true
       }));
@@ -41,9 +43,11 @@ export function initEventForm(toaster) {
     },
     switchToEditMode(event) {
       mode = "edit";
+      originalEvent = event;
       fillFormWithEvent(formElement, event);
     },
     reset() {
+      originalEvent = null;
       formElement.querySelector("#id").value = null;
       formElement.reset();
     }
