@@ -48,3 +48,14 @@ it("validateEvent_emailVacio_Fallido", () => {
   // Assert
   assert.equal(result, "Email is required");
 });
+
+it("validateEvent_camposObligatorios_Exitoso", () => {
+  // Arrange
+  const event = { ...validEvent };
+
+  // Act
+  const result = validateEvent(event);
+
+  // Assert
+  assert.equal(result, null);
+});
