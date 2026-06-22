@@ -1,6 +1,6 @@
 const EMAILJS_PUBLIC_KEY = "nu270i3G7l2ijN4oe";
 const EMAILJS_SERVICE_ID = "service_u4mn6ka";
-const EMAILJS_TEMPLATE_ID = "template_p1uzygm";
+const EMAILJS_TEMPLATE_ID = "template_8c3oapb";
 const EMAILJS_URL_API = "https://api.emailjs.com/api/v1.0/email/send";
 
 const dateFormatter = new Intl.DateTimeFormat("es-BO", {
